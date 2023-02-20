@@ -1,82 +1,41 @@
-// const container;
-const error = document.getElementsByClassName("error");
+// get age input value convert in standerd date.
+// comparing the standerd date with current date,
+// if input date is greated then current date
+// show alert , reset input date and date of birth
+// else substract current date  with  input standerd date
+// and pass to calcAge()
+function getAge() {
+  const dobInput = document.getElementById("dob");
+  dobInput.value = new Date();
+  dobInput.addEventListener("change", (e) => {
+    dob = new Date(e.target.value);
+    if (dob > new Date()) {
+      alert("enter valid date of birth");
+      dobInput.value = "";
+      document.getElementById("years").innerHTML = "";
+      document.getElementById("months").textContent = "";
+      document.getElementById("days").textContent = "";
+      return;
+    }
+    const stdDate = new Date(new Date() - dob);
+    calcAge(stdDate);
+  });
+}
+getAge();
 
-const inputBirthDate = document.getElementById("dob");
-const yearsEl = document.getElementById("years");
-const monthsEl = document.getElementById("months");
-const daysEl = document.getElementById("days");
+//  convert Standerd date to day, month,year
+// and pass to displayAge()
 
-const date = new Date();
-
-const todayDay = date.getDate();
-const todayMonth = date.getMonth();
-const todayYear = date.getFullYear();
-
-inputBirthDate.addEventListener("change", () => {
-  const birthDate = new Date(inputBirthDate.value);
-  const age = getAge(birthDate);
-  displayAge(age);
-});
-
-function getAge(birthDate) {
-  const ageDiff = {
-    day: "",
-    month: "",
-    year: "",
-  };
-
-  // console.log(todayMonth - birthDate.getMonth() - 1);
-
-  // calculating years gap
-  if (
-    todayMonth > birthDate.getMonth() ||
-    (todayMonth == birthDate.getMonth() && todayDay >= birthDate.getDate())
-  ) {
-    ageDiff.year = todayYear - birthDate.getFullYear();
-  } else {
-    ageDiff.year = todayYear - birthDate.getFullYear() - 1;
-  }
-
-  // calculating months gap
-
-  if (todayDay >= birthDate.getDate()) {
-    ageDiff.month = todayMonth - birthDate.getMonth();
-  } else if (todayDay < birthDate.getDate()) {
-    ageDiff.month = todayMonth - birthDate.getMonth() - 1;
-  }
-
-  // calculating days
-
-  const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-  if (todayDay >= birthDate.getDate()) {
-    ageDiff.day = todayDay - birthDate.getDate();
-  } else {
-    ageDiff.day =
-      todayDay - birthDate.getDate() + monthDays[birthDate.getMonth()];
-  }
-  // console.log(ageDiff);
-
-  // if birth date is entered future
-  // if (ageDiff.month) {
-  //   error[0].style.display = "block";
-  //   // console.log("error");
-  //   yearsEl.textContent = "";
-  //   monthsEl.textContent = "";
-  //   daysEl.textContent = "";
-  //   return;
-  // } else {
-  //   error[0].style.display = "none";
-  // }
-
-  return ageDiff;
+function calcAge(stdDate) {
+  const month = stdDate.getMonth();
+  const day = stdDate.getDate() - 1;
+  const year = stdDate.getFullYear() - 1970;
+  displayAge(year, month, day);
 }
 
-function displayAge(age) {
-  // console.log(age);
-  try {
-    yearsEl.textContent = age.year;
-    monthsEl.textContent = age.month;
-    daysEl.textContent = age.day;
-  } catch {}
+//  finaly display the age
+function displayAge(year, month, day) {
+  document.getElementById("years").innerHTML = year;
+  document.getElementById("months").textContent = month;
+  document.getElementById("days").textContent = day;
 }
