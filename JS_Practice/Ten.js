@@ -20,24 +20,24 @@ if (Guess)
     console.log("Falsy 1");
 } // falsy
 
-// let Guess2 = 0;
-// if (Guess2) 
-// {
-//     console.log("Falsy 2");
-// } // A value of 0 (zero) is also falsy.
+let Guess2 = 0;
+if (Guess2) 
+{
+    console.log("Falsy 2");
+} // A value of 0 (zero) is also falsy.
 
-// let Guess3 = "";
-// if (Guess3){
-// console.log("Falsy 3");
-// } //A "", which is an empty string, is falsy.
+let Guess3 = "";
+if (Guess3){
+console.log("Falsy 3");
+} //A "", which is an empty string, is falsy.
 
-// let Guess4 = null;
-// if(Guess4){
-//     console.log("Falsy 4");
-// } //A null variable is also falsy.
+let Guess4 = null;
+if(Guess4){
+    console.log("Falsy 4");
+} //A null variable is also falsy.
 
-// let Guess5 = Number("four"); // NaN
-// if(Guess5){
-//     console.log("Falsy 5");
-// } // Variables that are NaN evaluate to falsy.
+let Guess5 = Number("four"); // NaN
+if(Guess5){
+    console.log("Falsy 5");
+} // Variables that are NaN evaluate to falsy.
 
