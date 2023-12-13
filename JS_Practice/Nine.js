@@ -4,3 +4,4 @@ const greeting = '   Hello world!   ';
 
 console.log("Before Trim:",greeting);
 console.log("After Trim: ",greeting.trim());
+
